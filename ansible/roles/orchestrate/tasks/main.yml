@@ -1,0 +1,15 @@
+---
+- name: print to stdout
+  command: "ls -la /vagrant/ansible/files/www/Dockerfile"
+  register: result
+
+- debug: msg="{{ result.stdout }}"
+
+
+- name: Build Docker images from Dockerfiles.
+  docker_image:
+    name: ngnix
+    tag: ngnix
+    path: "/vagrant/ansible/files/www/"
+    state: build
+
