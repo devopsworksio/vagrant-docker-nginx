@@ -1,13 +1,8 @@
 
-FROM library/alpine:latest
+FROM nginx:alpine
 
 
-# Install Flask app dependencies.
-RUN apk add --no-cache nginx
-RUN mkdir www /run/nginx
-ADD etc/nginx.conf /etc/nginx/nginx.conf
-ADD html/index.html /html/index.html
-
-EXPOSE 8080
-
-CMD ["/usr/sbin/nginx"]
+# Install Flask app dependencies.apl
+ADD html/index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]

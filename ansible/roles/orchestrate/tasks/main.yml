@@ -8,8 +8,15 @@
 
 - name: Build Docker images from Dockerfiles.
   docker_image:
-    name: ngnix
-    tag: ngnix
+    name: nginx
+    tag: neil
     path: "/vagrant/ansible/files/www/"
     state: build
 
+- name: run the site in a docker container
+  docker:
+    name: site1
+    image: "nginx:neil"
+    state: reloaded
+    ports:
+      - "8080:80"
