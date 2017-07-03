@@ -47,6 +47,4 @@ fabric.properties
 
 .idea/
 .vagrant/
-
-
-bp.iml
+*.iml
